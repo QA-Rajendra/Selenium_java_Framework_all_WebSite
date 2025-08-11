@@ -15,10 +15,7 @@ import static Drivers.DriverManager.getDriver;
 
 public class RegisterPage extends CommonToAllPage {
 
-    // WebDriver instance is inherited from CommonToAllPage
-    // No need to initialize WebDriver here as it is initialized in CommonToAllPage (if applicable)
-
-    // Web elements using @FindBy annotation
+    // Locators (already fine as you had)
     @FindBy(xpath = "//input[@placeholder='First Name']")
     private WebElement firstName;
 
@@ -34,32 +31,14 @@ public class RegisterPage extends CommonToAllPage {
     @FindBy(xpath = "//input[@type='tel']")
     private WebElement phone;
 
-    @FindBy(xpath = "//input[@value='Male']")
-    private WebElement genderMale;
-
-    @FindBy(id = "checkbox1")
-    private WebElement hobbyCricket;
-
-    @FindBy(id = "checkbox2")
-    private WebElement hobbyMovies;
-
     @FindBy(id = "msdd")
     private WebElement languageDropdown;
-
-    @FindBy(xpath = "//a[text()='English']")
-    private WebElement englishLanguage;
 
     @FindBy(id = "Skills")
     private WebElement skillsDropdown;
 
-    @FindBy(id = "countries")
-    private WebElement countryDropdown;
-
     @FindBy(xpath = "//span[@role='combobox']")
     private WebElement selectCountry;
-
-    @FindBy(xpath = "//li[text()='India']")
-    private WebElement countryOption;
 
     @FindBy(id = "yearbox")
     private WebElement yearBox;
@@ -76,22 +55,36 @@ public class RegisterPage extends CommonToAllPage {
     @FindBy(id = "secondpassword")
     private WebElement secondPassword;
 
+    @FindBy(id = "imagesrc")
+    private WebElement fileUploadInput;
+
     @FindBy(id = "submitbtn")
     private WebElement submitBtn;
 
-    // Constructor to initialize WebElements using PageFactory
     public RegisterPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);  // Initialize elements using the driver passed
+        PageFactory.initElements(driver, this);
     }
 
-    // In RegisterPage
+    // ✅ Select multiple options dynamically
     public void selectLanguages(List<String> languages) {
         selectMultipleOptions(languageDropdown, "//a[text()='%s']", languages);
     }
 
-    public void fillForm(String fName, String lName, String addr, String emailId, String phoneNo, String gender,
-                         String hobby1, String hobby2, List<String> languages, String skills, String country,
-                         String dobYear, String dobMonth, String dobDay, String password) {
+    // ✅ Upload file
+    public void uploadFile(String filePath) {
+        fileUploadInput.sendKeys(filePath);
+    }
+
+    // ✅ Generic dropdown selection by visible text
+    private void selectDropdownByText(WebElement element, String visibleText) {
+        new Select(element).selectByVisibleText(visibleText);
+    }
+
+    // ✅ Fill form method
+    public void fillForm(String fName, String lName, String addr, String emailId, String phoneNo,
+                         String gender, List<String> hobbies, List<String> languages,
+                         String skills, String country, String dobYear, String dobMonth,
+                         String dobDay, String password, String filePath) {
 
         enterInput(firstName, fName);
         enterInput(lastName, lName);
@@ -100,32 +93,36 @@ public class RegisterPage extends CommonToAllPage {
         enterInput(phone, phoneNo);
 
         // Gender
-        WebElement genderElement = getDriver().findElement(By.xpath("//input[@value='" + gender + "']"));
-        clickElement(genderElement);
+        clickElement(getDriver().findElement(By.xpath("//input[@value='" + gender + "']")));
 
-        // Hobbies
-        if (hobby1 != null) clickElement(getDriver().findElement(By.xpath("//input[@value='" + hobby1 + "']")));
-        if (hobby2 != null) clickElement(getDriver().findElement(By.xpath("//input[@value='" + hobby2 + "']")));
+        // Hobbies dynamically
+        for (String hobby : hobbies) {
+            clickElement(getDriver().findElement(By.xpath("//input[@value='" + hobby + "']")));
+        }
 
         // Languages
         selectLanguages(languages);
 
         // Skills
-        new Select(skillsDropdown).selectByVisibleText(skills);
+        selectDropdownByText(skillsDropdown, skills);
 
         // Country
         clickElement(selectCountry);
-        WebElement countryOptionDynamic = getDriver().findElement(By.xpath("//li[text()='" + country + "']"));
-        clickElement(countryOptionDynamic);
+        clickElement(getDriver().findElement(By.xpath("//li[text()='" + country + "']")));
 
         // DOB
-        new Select(yearBox).selectByVisibleText(dobYear);
-        new Select(monthDropdown).selectByVisibleText(dobMonth);
-        new Select(dayBox).selectByVisibleText(dobDay);
+        selectDropdownByText(yearBox, dobYear);
+        selectDropdownByText(monthDropdown, dobMonth);
+        selectDropdownByText(dayBox, dobDay);
 
-        // Password
+        // Passwords
         enterInput(firstPassword, password);
         enterInput(secondPassword, password);
+
+        // File upload (optional)
+        if (filePath != null && !filePath.isEmpty()) {
+            uploadFile(filePath);
+        }
 
         // Submit
         clickElement(submitBtn);
