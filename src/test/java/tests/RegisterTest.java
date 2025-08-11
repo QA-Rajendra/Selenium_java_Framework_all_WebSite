@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.RegisterPage;
 import utils.PropertiesReader;
 
+
 import java.util.Arrays;
 
 import static Drivers.DriverManager.getDriver;
@@ -15,7 +16,7 @@ public class RegisterTest extends CommonToAllTest {
     private static final Logger logger = LogManager.getLogger(RegisterTest.class);
     @Test
     public void testRegisterForm() {
-        logger.info("🚀 Starting ");
+        logger.info("🚀 Starting Main");
 
         WebDriver driver = getDriver();
 
@@ -26,26 +27,26 @@ public class RegisterTest extends CommonToAllTest {
         RegisterPage registerPage = new RegisterPage(getDriver());
 
 
+
+        // Fill out the form
         registerPage.fillForm(
-                "John",
-                "Doe",
-                "123 Main St",
-                "john.doe@example.com",
-                "9876543210",
-                "Male",
-                "Cricket",
-                "Movies",
-                Arrays.asList("English", "Hindi", "Spanish"), // Multiple languages
-                "Java",
-                "India",
-                "1990",
-                "July",
-                "25",
-                "Test@1234"
+                "John",                      // First Name
+                "Doe",                       // Last Name
+                "123 Main St",               // Address
+                "john.doe@example.com",      // Email
+                "9876543210",                 // Phone
+                "Male",                       // Gender
+                Arrays.asList("Cricket", "Movies"), // Hobbies
+                Arrays.asList("English", "Spanish"), // Languages
+                "Java",                       // Skills
+                "India",                      // Country
+                "1990",                       // DOB Year
+                "July",                       // DOB Month
+                "25",                         // DOB Day
+                "Test@1234",                  // Password
+                "C:\\Users\\Sushant Narute\\Downloads\\Framework\\org.example\\images\\students_icon 1.png"      // File Upload
         );
-
-
-        // Optionally, you can add verification steps here to check if the form was successfully submitted
-        // For example, check if a success message appears or verify if the registration was completed successfully.
     }
 }
+
+
