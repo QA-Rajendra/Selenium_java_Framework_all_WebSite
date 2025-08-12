@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import pages.RegisterPage;
+import pages.registor.RegisterPage;
 import utils.PropertiesReader;
 
 
@@ -37,7 +37,7 @@ public class RegisterTest extends CommonToAllTest {
                 "9876543210",                 // Phone
                 "Male",                       // Gender
                 Arrays.asList("Cricket", "Movies"), // Hobbies
-                Arrays.asList("English", "Spanish"), // Languages
+                Arrays.asList("English", "Dutch"), // Languages
                 "Java",                       // Skills
                 "India",                      // Country
                 "1990",                       // DOB Year

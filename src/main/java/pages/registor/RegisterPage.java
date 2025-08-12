@@ -1,7 +1,8 @@
-package pages;
+package pages.registor;
 
 import base.CommonToAllPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
+import static Drivers.DriverManager.driver;
 import static Drivers.DriverManager.getDriver;
 
 
@@ -125,6 +127,8 @@ public class RegisterPage extends CommonToAllPage {
         }
 
         // Submit
-        clickElement(submitBtn);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitBtn);
+        submitBtn.click();
+
     }
 }
