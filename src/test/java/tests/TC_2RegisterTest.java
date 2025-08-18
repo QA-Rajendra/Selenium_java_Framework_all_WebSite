@@ -3,13 +3,15 @@ package tests;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.RegisterPage;
+
 import base.CommonToAllTest;
+import pages.registor.RegisterPage;
 import utils.PropertiesReader;
 
 import java.util.Arrays;
 
-import static drivers.DriverManager.getDriver;
+import static Drivers.DriverManager.getDriver;
+
 
 public class TC_2RegisterTest extends CommonToAllTest {
 
