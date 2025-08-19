@@ -29,24 +29,40 @@ public class Iframe extends CommonToAllPage {
     @FindBy(xpath = "//a[@href='#Multiple']")
     private WebElement multipleTab;
 
+    private By inputInsideIframe = By.xpath("//input[@type='text']");
+
     public Iframe(WebDriver driver) {
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-    // Open Frames page via SwitchTo dropdown
     public void openFramesPage() {
-    }
-
-    }
-
+        wait.until(ExpectedConditions.elementToBeClickable(switchToDropdown)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(framesLink)).click();
     }
 
     public void switchToSingleIframe() {
+        wait.until(ExpectedConditions.elementToBeClickable(singleTab)).click();
+        WebElement iframe = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("singleframe")));
+        driver.switchTo().frame(iframe);
     }
 
     public void switchToNestedIframe() {
-        WebElement innerFrame = wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("iframe")));
+        wait.until(ExpectedConditions.elementToBeClickable(multipleTab)).click();
+        WebElement outerFrame = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//iframe[@src='MultipleFrames.html']")));
+        driver.switchTo().frame(outerFrame);
+
+        WebElement innerFrame = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//iframe[@src='SingleFrame.html']")));
         driver.switchTo().frame(innerFrame);
+    }
+
+    public void typeInInputInsideIframe(String text) {
+        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(inputInsideIframe));
+        input.clear();
+        input.sendKeys(text);
+    }
+
+    public void switchBackToDefault() {
+        driver.switchTo().defaultContent();
     }
 }
