@@ -1,7 +1,6 @@
 package UtilsExcel;
 
 
-
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -20,11 +19,9 @@ public class UtilExcel {
 
     // File -> Workbook -> Sheet-> Row -> cell -> [][]
 
+    public static String SHEET_PATH = System.getProperty("user.dir") + "/src/test/resources/TestData.xlsx";
     static Workbook book;
     static Sheet sheet;
-
-    public static String SHEET_PATH = System.getProperty("user.dir") + "/src/test/resources/TestData.xlsx";
-
 
     public static Object[][] getTestDataFromExcel(String sheetName) {
         FileInputStream file = null;

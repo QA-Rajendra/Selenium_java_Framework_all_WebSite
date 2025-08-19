@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.more.ChartsLink;
 import pages.more.DynamicDataLink;
 import utils.PropertiesReader;
 
@@ -26,9 +25,9 @@ public class DynamicDataTest extends CommonToAllTest {
         // Step 1: Navigate
         driver.get(PropertiesReader.readKey("url"));
 
-        DynamicDataLink dynamicDataLink=new DynamicDataLink(getDriver());
+        DynamicDataLink dynamicDataLink = new DynamicDataLink(getDriver());
 
-         dynamicDataLink.gotoThisPage();
+        dynamicDataLink.gotoThisPage();
         // Verify heading
         Assert.assertTrue(dynamicDataLink.isHeadingDisplayed(), "Heading not visible!");
 

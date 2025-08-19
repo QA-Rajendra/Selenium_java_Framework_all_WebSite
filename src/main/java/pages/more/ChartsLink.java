@@ -18,7 +18,7 @@ import static Drivers.DriverManager.driver;
 
 public class ChartsLink extends CommonToAllPage {
 
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
 
     // "More" dropdown menu
     @FindBy(xpath = "//a[@class='dropdown-toggle' and text()='More']")
@@ -47,7 +47,7 @@ public class ChartsLink extends CommonToAllPage {
     private WebElement lineChartCanvas;
 
     // Dynamic stats (Shares Traded, Market Cap, etc.)
-    private By lineChartStats = By.xpath("//div[@id='line-chart-widget']//div[@class='panel-footer']//li");
+    private final By lineChartStats = By.xpath("//div[@id='line-chart-widget']//div[@class='panel-footer']//li");
 
     @FindBy(id = "myBarChart")
     private WebElement barChartCanvas;

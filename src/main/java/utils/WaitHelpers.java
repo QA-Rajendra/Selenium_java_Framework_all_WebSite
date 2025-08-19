@@ -1,7 +1,6 @@
 package utils;
 
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +19,7 @@ import static Drivers.DriverManager.getDriver;
 public class WaitHelpers {
 
 
-    public static void waitJVM(int time){
+    public static void waitJVM(int time) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
@@ -28,22 +27,22 @@ public class WaitHelpers {
         }
     }
 
-    public static void waitImplicitWait(WebDriver driver,int time){
+    public static void waitImplicitWait(WebDriver driver, int time) {
         driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
     }
 
 
-    public static void checkVisibility(WebDriver driver, By locator,int time){
+    public static void checkVisibility(WebDriver driver, By locator, int time) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public static void checkVisibility(WebDriver driver, By locator){
+    public static void checkVisibility(WebDriver driver, By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public static void checkVisibilityOfAndTextToBePresentInElement(WebDriver driver, WebElement element){
+    public static void checkVisibilityOfAndTextToBePresentInElement(WebDriver driver, WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOf(element));
         wait.until(ExpectedConditions.textToBePresentInElement(element, "Your email, password, IP address or location did not match"));
@@ -67,13 +66,14 @@ public class WaitHelpers {
         return new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.presenceOfElementLocated(elementLocation));
     }
 
-    public static WebElement presenceOfElement(WebDriver driver,By elementLocation) {
+    public static WebElement presenceOfElement(WebDriver driver, By elementLocation) {
         return new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.presenceOfElementLocated(elementLocation));
     }
 
     public static WebElement visibilityOfElement(By elementLocation) {
         return new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(elementLocation));
     }
+
     public static WebElement visibilityOfElement(WebElement elementLocation) {
         return new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(elementLocation));
     }
@@ -81,10 +81,6 @@ public class WaitHelpers {
     public WebElement getElement(By key) {
         return getDriver().findElement(key);
     }
-
-
-
-
 
 
 }

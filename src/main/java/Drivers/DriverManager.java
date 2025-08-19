@@ -1,7 +1,6 @@
 package Drivers;
 
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -30,8 +29,8 @@ public class DriverManager {
         String browser = PropertiesReader.readKey("browser");
         browser = browser.toLowerCase();
 
-        switch (browser){
-            case "edge" :
+        switch (browser) {
+            case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--start-maximized");
                 edgeOptions.addArguments("--guest");
@@ -52,12 +51,11 @@ public class DriverManager {
         }
 
 
-
     }
 
 
     // When we want to close the browser
-    public static void down(){
+    public static void down() {
         if (getDriver() != null) {
             driver.quit();
             driver = null;

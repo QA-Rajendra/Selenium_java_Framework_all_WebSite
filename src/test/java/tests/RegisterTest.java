@@ -1,4 +1,5 @@
 package tests;
+
 import base.CommonToAllTest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,13 +8,13 @@ import org.testng.annotations.Test;
 import pages.registor.RegisterPage;
 import utils.PropertiesReader;
 
-
 import java.util.Arrays;
 
 import static Drivers.DriverManager.getDriver;
 
 public class RegisterTest extends CommonToAllTest {
     private static final Logger logger = LogManager.getLogger(RegisterTest.class);
+
     @Test
     public void testRegisterForm() {
         logger.info("🚀 Starting Main");
@@ -25,7 +26,6 @@ public class RegisterTest extends CommonToAllTest {
 
         // Create RegisterPage instance using the inherited WebDriver from CommonToAllTest
         RegisterPage registerPage = new RegisterPage(getDriver());
-
 
 
         // Fill out the form

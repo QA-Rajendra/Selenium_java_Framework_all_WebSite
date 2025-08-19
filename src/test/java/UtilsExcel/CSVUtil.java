@@ -19,6 +19,7 @@ public class CSVUtil {
 
     /**
      * Reads a CSV file and returns its content as a 2D String array.
+     *
      * @param skipHeader if true, skips the first row (header)
      * @return 2D String array with CSV data
      */

@@ -15,7 +15,7 @@ import static Drivers.DriverManager.driver;
 
 public class Iframe extends CommonToAllPage {
 
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
 
     @FindBy(xpath = "//a[@class='dropdown-toggle' and text()='SwitchTo']")
     private WebElement switchToDropdown;
@@ -29,7 +29,7 @@ public class Iframe extends CommonToAllPage {
     @FindBy(xpath = "//a[@href='#Multiple']")
     private WebElement multipleTab;
 
-    private By inputInsideIframe = By.xpath("//input[@type='text']");
+    private final By inputInsideIframe = By.xpath("//input[@type='text']");
 
     public Iframe(WebDriver driver) {
         PageFactory.initElements(driver, this);

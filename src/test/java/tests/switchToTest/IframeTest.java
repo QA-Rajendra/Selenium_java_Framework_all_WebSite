@@ -1,15 +1,12 @@
 package tests.switchToTest;
 
 import base.CommonToAllTest;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.SwitchTo.Iframe;
-import utils.PropertiesReader;
 
 import static Drivers.DriverManager.getDriver;
 
 public class IframeTest extends CommonToAllTest {
-
 
 
 //        // Initialize driver and page object
@@ -30,24 +27,24 @@ public class IframeTest extends CommonToAllTest {
 //        iframePage.switchToMainContent();
 //
 
-                    @Test
-                    public void iframeInteractionTest() {
-                            Iframe iframePage = new Iframe(getDriver());
+    @Test
+    public void iframeInteractionTest() {
+        Iframe iframePage = new Iframe(getDriver());
 
-                            iframePage.openUrl();
-                            iframePage.openFramesPage();
+        iframePage.openUrl();
+        iframePage.openFramesPage();
 
-                            // Single Iframe
-                            iframePage.switchToSingleIframe();
-                            iframePage.typeInInputInsideIframe("Hello Single Iframe");
-                            iframePage.switchBackToDefault();
+        // Single Iframe
+        iframePage.switchToSingleIframe();
+        iframePage.typeInInputInsideIframe("Hello Single Iframe");
+        iframePage.switchBackToDefault();
 
-                            // Nested Iframe
-                            iframePage.switchToNestedIframe();
-                            iframePage.typeInInputInsideIframe("Hello Nested Iframe");
-                            iframePage.switchBackToDefault();
-                    }
-            }
+        // Nested Iframe
+        iframePage.switchToNestedIframe();
+        iframePage.typeInInputInsideIframe("Hello Nested Iframe");
+        iframePage.switchBackToDefault();
+    }
+}
 
 
 

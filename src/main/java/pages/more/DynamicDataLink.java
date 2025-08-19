@@ -1,7 +1,6 @@
 package pages.more;
 
 
-
 import base.CommonToAllPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,9 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DynamicDataLink extends CommonToAllPage {
-    private WebDriverWait wait;
     WebDriver driver;
-
+    private WebDriverWait wait;
     // "More" dropdown menu
     @FindBy(xpath = "//a[@class='dropdown-toggle' and text()='More']")
     private WebElement moreDropdown;
@@ -57,6 +55,7 @@ public class DynamicDataLink extends CommonToAllPage {
         clickElement(moreDropdown);
         clickElement(dynamicDataLink);
     }
+
     // ====== Actions ======
     public boolean isHeadingDisplayed() {
         return dynamicDataHeading.isDisplayed();

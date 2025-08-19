@@ -1,10 +1,9 @@
 package tests;
 
 
+import base.CommonToAllTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import base.CommonToAllTest;
 import pages.registor.RegisterPage;
 import utils.PropertiesReader;
 
@@ -25,7 +24,7 @@ public class TC_2RegisterTest extends CommonToAllTest {
                 },
                 {
                         "Jane", "Smith", "456 Park Ave", "jane.smith@example.com", "0987654321",
-                        "FeMale", Arrays.asList("Cricket","Hockey"), Arrays.asList("English", "Czech"),
+                        "FeMale", Arrays.asList("Cricket", "Hockey"), Arrays.asList("English", "Czech"),
                         "Python", "Japan", "1985", "December", "22", "Pass456!", "C:\\Users\\Sushant Narute\\Downloads\\Framework\\org.example\\images\\students_icon 1.png"
                 }
         };
