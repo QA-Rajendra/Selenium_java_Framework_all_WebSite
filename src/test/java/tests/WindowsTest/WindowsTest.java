@@ -3,7 +3,7 @@ package tests.WindowsTest;
 import base.CommonToAllTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.Windows.WindowsPage;
+import pages.windows1.WindowsPage;
 import utils.LoggerFactory;
 
 public class WindowsTest extends CommonToAllTest {

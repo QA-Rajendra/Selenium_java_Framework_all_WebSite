@@ -17,7 +17,7 @@ import static Drivers.DriverManager.getDriver;
 public class DynamicDataTest extends CommonToAllTest {
 
     @Test
-    public void testDynamicDataChanges() {
+    public void testDynamicDataChanges() throws InterruptedException {
 
 
         WebDriver driver = getDriver();
@@ -36,9 +36,9 @@ public class DynamicDataTest extends CommonToAllTest {
 
         // Click button
         dynamicDataLink.clickGetDynamicData();
-
+         //Thread.sleep(2000);
         // Wait until data changes
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.not(ExpectedConditions.textToBe(By.id("loading"), oldData)));
 
         // Capture new data

@@ -82,5 +82,19 @@ public class WaitHelpers {
         return getDriver().findElement(key);
     }
 
+    public static void waitForElementVisible(WebDriver driver, WebElement element, int timeout) {
+        new WebDriverWait(driver, Duration.ofSeconds(timeout))
+                .until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void waitForElementClickable(WebDriver driver, WebElement element, int timeout) {
+        new WebDriverWait(driver, Duration.ofSeconds(timeout))
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static void waitForAlert(WebDriver driver, int timeout) {
+        new WebDriverWait(driver, Duration.ofSeconds(timeout))
+                .until(ExpectedConditions.alertIsPresent());
+    }
 
 }

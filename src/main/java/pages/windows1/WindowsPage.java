@@ -1,4 +1,4 @@
-package pages.Windows;
+package pages.windows1;
 
 import base.CommonToAllPage;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.LoggerFactory;
 
-import java.time.Duration;
 import java.util.Set;
 
 import static Drivers.DriverManager.getDriver;
